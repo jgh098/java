@@ -1,0 +1,16 @@
+크롬 다른 도메인 iframe 내 세션 없어지는문제해결
+apache httpd.conf
+
+
+LoadModule headers_module modules/mod_headers.so
+(주석제거)
+
+<IfModule headers_module>
+...
+
+    Header edit Set-Cookie ^(.*)$ $1;SameSite=None;Secure;
+</IfModule>
+(추가)
+
+아파치 재기동 
+(https 에서만 동작가능)
